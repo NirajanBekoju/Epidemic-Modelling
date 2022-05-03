@@ -3,10 +3,11 @@
 #include <GL/glu.h>
 #include <GL/glut.h>
 #include <math.h>
+#include <vector>
 
 #include "Person.h"
 
-#define windowTitle "Circle Motion"
+#define windowTitle "Epidemic Modelling"
 #define windowWidth 400
 #define windowHeight 400
 
@@ -18,8 +19,8 @@ void init();
 void draw_circle(Person);
 void Timer(int);
 
-Person p1;
-Person p2;
+int noPeople = 75;
+std::vector<Person> p (noPeople);
 
 int main(int argc, char **argv)
 {
@@ -41,10 +42,10 @@ int main(int argc, char **argv)
 void display()
 {
     glClear(GL_COLOR_BUFFER_BIT);
-    p1.drawPerson();
-    p1.movePerson(false);
-    p2.drawPerson();
-    p2.movePerson(true);
+    for(int i = 0; i < noPeople; i++){
+        p[i].drawPerson();
+        p[i].movePerson(false);
+    }
     glutSwapBuffers();
 }
 
