@@ -11,9 +11,9 @@ Person::Person()
 void Person::drawPerson()
 {
     // check status for the color
-    // GREEN=> SUSCEPTIBLE
+    // BLUE=> SUSCEPTIBLE
     // RED => Infected
-    // BLUE => Recovered
+    // GREEN => Recovered
     if (status == 0)
     {
         glColor3f(0.0, 1.0, 0.0);
