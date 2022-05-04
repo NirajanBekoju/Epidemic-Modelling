@@ -3,7 +3,9 @@
 Person::Person()
 {
     rad = 0.1;
-    Person::initVariables();
+    infectedDays = 0;
+    status = SUSCEPTIBLE;
+    initVariables();
 }
 
 void Person::drawPerson()
@@ -80,30 +82,72 @@ void Person::initVariables()
     {
         vx = -vx;
     }
-    else if(var > 5 && var < 7.5)
+    else if (var > 5 && var < 7.5)
     {
         vx = -vx;
         vy = -vy;
     }
-    else if(var > 7.5){
+    else if (var > 7.5)
+    {
         vy = -vy;
     }
 
     // Choose SUSCEPTIBLE OR INFECTED randomly
-    upper_limit = 1;
-    lower_limit = 0;
-    var = ((upper_limit - lower_limit) * rand()) / RAND_MAX + lower_limit;
-    var -= 0.3;
+    // upper_limit = 1;
+    // lower_limit = 0;
+    // var = ((upper_limit - lower_limit) * rand()) / RAND_MAX + lower_limit;
+    // var -= 0.3;
 
-    if (var < 0.5)
-    {
-        status = SUSCEPTIBLE;
-    }
-    else
-    {
-        status = INFECTED;
-    }
+    // if (var < 0.5)
+    // {
+    //     status = SUSCEPTIBLE;
+    // }
+    // else
+    // {
+    //     status = INFECTED;
+    // }
 
     // std::cout << "Initial Status of Person" << std::endl;
     // std::cout << cx << " " << cy << " " << status << " " << vx << " " << vy << std::endl;
+}
+
+int Person::getPersonStatus()
+{
+    return status;
+}
+
+float Person::getCX()
+{
+    return cx;
+}
+
+float Person::getCY()
+{
+    return cy;
+}
+
+void Person::changeToInfected()
+{
+    if (status == SUSCEPTIBLE)
+    {
+        status = INFECTED;
+    }
+}
+
+void Person::changeToRecovered(){
+    if(status == INFECTED){
+        status = RECOVERED;
+    }
+}
+
+// Increment the infected days
+// Recover the infected person after 
+void Person::checkInfectedDays(){
+    // if the person is infected
+    if(status == 1){
+        infectedDays += 1; 
+        if(infectedDays > INFECTION_PERIOD){
+            changeToRecovered();
+        }
+    }
 }
