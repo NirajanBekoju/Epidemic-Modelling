@@ -8,58 +8,6 @@ Person::Person()
     initVariables();
 }
 
-void Person::drawPerson()
-{
-    // check status for the color
-    // BLUE=> SUSCEPTIBLE
-    // RED => Infected
-    // GREEN => Recovered
-    if (status == 0)
-    {
-        glColor3f(0.0, 1.0, 0.0);
-    }
-    else if (status == 1)
-    {
-        glColor3f(1.0, 0.0, 0.0);
-    }
-    else if (status == 2)
-    {
-        glColor3f(0.0, 0.0, 1.0);
-    }
-
-    // Begin drawing the circles representing person
-    glBegin(GL_TRIANGLE_FAN);
-    glVertex2f(cx, cy);
-    int numSegments = 100;
-    GLfloat angle;
-    for (int i = 0; i <= numSegments; i++)
-    {
-        angle = i * 2.0f * M_PI / numSegments;
-        glVertex2f(cosf(angle) * rad + cx, sinf(angle) * rad + cy);
-    }
-    glEnd();
-}
-
-void Person::movePerson(bool moveStatus = false)
-{
-    cx += vx;
-    cy += vy;
-    if ((cx + rad > 10) || (cx - rad < 0))
-    {
-        vx = -vx;
-    }
-    else if ((cy + rad > 10) || (cy - rad < 0))
-    {
-        vy = -vy;
-    }
-
-    if (moveStatus)
-    {
-        std::cout << "Current Status of Person" << std::endl;
-        std::cout << cx << " " << cy << " " << status << " " << vx << " " << vy << std::endl;
-    }
-}
-
 // Initialize position, velocity and status of the person
 void Person::initVariables()
 {
@@ -111,21 +59,86 @@ void Person::initVariables()
     // std::cout << cx << " " << cy << " " << status << " " << vx << " " << vy << std::endl;
 }
 
+// draw the cirlces representing the person
+void Person::drawPerson()
+{
+    // check status for the color
+    // BLUE=> SUSCEPTIBLE
+    // RED => Infected
+    // GREEN => Recovered
+    if (status == 0)
+    {
+        glColor3f(0.0, 1.0, 0.0);
+    }
+    else if (status == 1)
+    {
+        glColor3f(1.0, 0.0, 0.0);
+    }
+    else if (status == 2)
+    {
+        glColor3f(0.0, 0.0, 1.0);
+    }
+
+    // Begin drawing the circles representing person
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(cx, cy);
+    int numSegments = 100;
+    GLfloat angle;
+    for (int i = 0; i <= numSegments; i++)
+    {
+        angle = i * 2.0f * M_PI / numSegments;
+        glVertex2f(cosf(angle) * rad + cx, sinf(angle) * rad + cy);
+    }
+    glEnd();
+}
+
+// update the position of the person on the basis of velocity of the person
+void Person::movePerson(bool moveStatus = false)
+{
+    // update the position of circles with velocity 
+    cx += vx;
+    cy += vy;
+    // if the circles got striked on left or right border 
+    // reflect it by changing the direction of x-component of the velocity 
+    if ((cx + rad > 10) || (cx - rad < 0))
+    {
+        vx = -vx;
+    }
+
+    // if the circles got striked on top or bottom border 
+    // reflect it by changing the direction of y-component of the velocity
+    else if ((cy + rad > 10) || (cy - rad < 0))
+    {
+        vy = -vy;
+    }
+
+    // display the moveStatus if moveStatus = true
+    if (moveStatus)
+    {
+        std::cout << "Current Status of Person" << std::endl;
+        std::cout << cx << " " << cy << " " << status << " " << vx << " " << vy << std::endl;
+    }
+}
+
+// get the status of the person =>  SUSCEPTIBLE, INFECTED OR REMOVED
 int Person::getPersonStatus()
 {
     return status;
 }
 
+// get the center x - coordinate of the circle representing person
 float Person::getCX()
 {
     return cx;
 }
 
+// get the center y - coordinate of the circle representing person
 float Person::getCY()
 {
     return cy;
 }
 
+// change the SUSCEPTIBLE person to INFECTED status
 void Person::changeToInfected()
 {
     if (status == SUSCEPTIBLE)
@@ -134,6 +147,7 @@ void Person::changeToInfected()
     }
 }
 
+// change the INFECTED category to RECOVERED status
 void Person::changeToRecovered(){
     if(status == INFECTED){
         status = RECOVERED;

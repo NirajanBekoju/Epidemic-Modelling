@@ -5,22 +5,17 @@
 #include <GL/glut.h>
 #include <math.h>
 #include <vector>
+#include <string>
 
 #include "Person.h"
 
-#define windowTitle "Epidemic Modelling"
-#define windowWidth 400
-#define windowHeight 400
-#define INFECTION_RADIUS 0.3
-
-int refreshMillis = 30;
-
+// basic function for the GRAPHICS RENDERING
 void display();
 void reshape(int, int);
 void init();
-void draw_circle(Person);
 void Timer(int);
 
+// FUNCTIONS for SIR model
 void initInfectedPerson();
 void calculateSIR(std::vector<Person>);
 void writeDataToFile();
@@ -29,26 +24,51 @@ void showCX();
 void infectSusceptible();
 void checkRecovery();
 
-int noPeople = 100;
-int noOfSusceptible, noOfInfected, noOfRecovered;
+// Variable to define our window
+#define windowTitle "Epidemic Modelling"
+#define windowWidth 400
+#define windowHeight 400
+int refreshMillis = 30; // Frame rate per second
+
+// File path to the data generated from the epidemic modellng
+std::string FILE_PATH = "data/data.csv";
+
+// generate the vector of certain number of people
+unsigned int noPeople = 100;
 std::vector<Person> p(noPeople);
 
+// keep track of no of susceptible, infected and recovered people
+int noOfSusceptible, noOfInfected, noOfRecovered;
+
+// factor affecting the epidemic
+float INFECTION_RADIUS = 0.3;
+unsigned int initialInfectedPercent = 3;
+
 int main(int argc, char **argv)
-{   
+{
     // initialize the infected person
     initInfectedPerson();
 
+    // initialie the glue
     glutInit(&argc, argv);
+    // initialie the display mode
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
+    // initialie the window size(width, height)
     glutInitWindowSize(windowWidth, windowHeight);
+    // initial position of the window in out screen
     glutInitWindowPosition(100, 100);
     glutCreateWindow(windowTitle);
 
+    // callback function for display
     glutDisplayFunc(display);
+    // cullback function for reshaping the window
     glutReshapeFunc(reshape);
+    // call back function for frame per sec
     glutTimerFunc(0, Timer, 0);
+    // set the background color for our window
     init();
 
+    // initialize the main loop for rendering
     glutMainLoop();
     return 0;
 }
@@ -56,16 +76,23 @@ int main(int argc, char **argv)
 void display()
 {
     glClear(GL_COLOR_BUFFER_BIT);
+    // draw all the person and make them move
     for (int i = 0; i < noPeople; i++)
     {
         p[i].drawPerson();
         p[i].movePerson(false);
     }
+    // sort the vector pepole on the basis of their x-position
     sortPeopleVec();
+    // track the no. of susceptible, infected and removed people
     calculateSIR(p);
+    // write the current data into the csv file
     writeDataToFile();
+    // infect the susceptible person within the infected region
     infectSusceptible();
+    // recover the infected people who have completed the infection period
     checkRecovery();
+    // swap the buffer for next screen
     glutSwapBuffers();
 }
 
@@ -83,6 +110,7 @@ void reshape(int w, int h)
     // projection
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
+
     gluOrtho2D(0, 10, 0, 10);
     glMatrixMode(GL_MODELVIEW);
 }
@@ -94,11 +122,18 @@ void Timer(int value)
     glutTimerFunc(refreshMillis, Timer, 0); // subsequent timer call at milliseconds
 }
 
+// initialize the no. of infected person
 void initInfectedPerson()
 {
-    p[0].changeToInfected();
+    // initially, all are susceptible to disease
+    // calc. initial infected number of people and infect them
+    unsigned int initialInfectedNumber = (initialInfectedPercent * noPeople) / 100; 
+    for(int i = 0; i < initialInfectedNumber; i++){
+        p[i].changeToInfected();
+    }
 }
 
+// keep track of the number of susceptible, infected and removed people
 void calculateSIR(std::vector<Person> p)
 {
     noOfSusceptible = 0;
@@ -121,17 +156,18 @@ void calculateSIR(std::vector<Person> p)
     }
 }
 
+// write the no. of susceptible, infected and recovered people to a csv file
 void writeDataToFile()
 {
     std::fstream file;
-    file.open("data.csv", std::ios::out | std::ios::app);
+    file.open(FILE_PATH, std::ios::out | std::ios::app);
 
     file << noOfSusceptible << ", "
          << noOfInfected << ", "
          << noOfRecovered << std::endl;
 }
 
-// Sort the people vector on the ascending order
+// Sort the people vector on the basis of x - coordinate 
 void sortPeopleVec()
 {
     Person temp;
@@ -149,7 +185,7 @@ void sortPeopleVec()
     }
 }
 
-// check if sort
+// created in order to check if the vector is correctly sorted: just for debugging purpose
 void showCX()
 {
     for (int i = 0; i < noPeople; i++)
@@ -232,6 +268,9 @@ void infectSusceptible()
     }
 }
 
+
+// check if the infected person has completed the infection period
+// if he/she completed the infection period, removed them
 void checkRecovery()
 {
     for (int i = 0; i < noPeople; i++)

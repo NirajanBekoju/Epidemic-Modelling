@@ -1,2 +1,11 @@
-g++ main.cpp -o main -lglut -lGLU -lGL
+S => SUSCEPTIBLE means those who could be potentially infected
+I => INFECTED means those who are infected by the epedemic disease
+R => REMOVED means those who are either recovered or death
+
+ASSUMPTION IN OUR SIR MODEL
+0. The model is valid only for very short period of time.
+1. Population remains constant and so no death just recovery from the diseases.
+2. Rate of infectives is directly propotional to the contact between the persons.
+
+
 
