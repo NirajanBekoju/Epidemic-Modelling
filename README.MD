@@ -5,10 +5,10 @@
 )
 Epidemic modelling is the mathematical model to illustrate the spread of epidemic disease. We have use SIR model in order to study the epidemic disease transmission. SIR model is a compartmental model in epidemiology. In this model, the population is assigned to compartments with labels - for example :- S, I or R(SUSCEPTIBLE, INFECTIOUS or RECOVERED). People may progress between compartments. 
 
-SIR model is one of the simplest compartmental models, and many models are derivatives of this basic form. THe model consists of three compartments:-
+SIR model is one of the simplest compartmental models, and many models are derivatives of this basic form. The model consists of three compartments:-
 1. S : The number of susceptible individuals. When a susceptible and an infectious come into "infectious contact", the susceptible individual contracts the disease and transitionsto the infectious compartment.
-2. I : Thenumber of infectious individuals. These are individuals who have been infected and are capable of infecting susceptible individuals.
-3. R : The number of removed(and immuned) or deceased individuals. THeses are individuals who have been infected andhave either recovered from the disease and entered the removed compartment, or died. it is assumed that the number of deaths is negligible with respect to the total population. This compartment may also be called "recoverd" or "ressistant".
+2. I : The number of infectious individuals. These are individuals who have been infected and are capable of infecting susceptible individuals.
+3. R : The number of removed(and immuned) or deceased individuals. These are individuals who have been infected and have either recovered from the disease and entered the removed compartment, or died. it is assumed that the number of deaths is negligible with respect to the total population. This compartment may also be called "recoverd" or "ressistant".
 
 
 ## Implementation
@@ -18,7 +18,7 @@ Then, we took the data on various factor which are explained in ([Data Analysis]
 ![Epidemic Modelling](https://github.com/NirajanBekoju/Epidemic-Modelling/blob/master/epidemic_modelling.png?raw=true)
 
 ## To Run Locally
-TO run locally, you mush have installed g++ Compiler(Used Version : 9.3.0), OPENGL library for mathematical modelling and Python3 for the data analysis part.
+To run locally, you mush have installed g++ Compiler(Used Version : 9.3.0), OPENGL library for mathematical modelling and Python3 for the data analysis part.
 
 
 **Clone the repository**
