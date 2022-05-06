@@ -31,7 +31,7 @@ void checkRecovery();
 int refreshMillis = 30; // Frame rate per second
 
 // File path to the data generated from the epidemic modellng
-std::string FILE_PATH = "data/dataf03_240_100_3.csv";
+std::string FILE_PATH = "data/data.csv";
 
 // generate the vector of certain number of people
 unsigned int noPeople = 100;
