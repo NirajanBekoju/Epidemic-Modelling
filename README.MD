@@ -13,9 +13,9 @@ SIR model is one of the simplest compartmental models, and many models are deriv
 
 ## Implementation
 We have first performed the mathematical model of the epidemic disease as show in the figure below.
-![Epidemic Modelling](https://github.com/NirajanBekoju/Epidemic-Modelling/blob/master/epidemic_modelling.png?raw=true)
-
 Then, we took the data on various factor which are explained in ([Data Analysis](https://github.com/NirajanBekoju/Epidemic-Modelling/blob/master/Data%20Analysis.ipynb))
+
+![Epidemic Modelling](https://github.com/NirajanBekoju/Epidemic-Modelling/blob/master/epidemic_modelling.png?raw=true)
 
 ## To Run Locally
 TO run locally, you mush have installed g++ Compiler(Used Version : 9.3.0), OPENGL library for mathematical modelling and Python3 for the data analysis part.
