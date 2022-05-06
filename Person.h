@@ -8,7 +8,7 @@
 
 // infection period is the unit of time up to which the infected person remains infected.
 // after the infection period, the infected person is changed to removed status
-#define INFECTION_PERIOD 120
+#define INFECTION_PERIOD 240
 
 // Status of a person at any time period
 enum STATUS

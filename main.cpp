@@ -31,7 +31,7 @@ void checkRecovery();
 int refreshMillis = 30; // Frame rate per second
 
 // File path to the data generated from the epidemic modellng
-std::string FILE_PATH = "data/dataf03_120_100_10.csv";
+std::string FILE_PATH = "data/dataf03_240_100_3.csv";
 
 // generate the vector of certain number of people
 unsigned int noPeople = 100;
@@ -42,7 +42,7 @@ int noOfSusceptible, noOfInfected, noOfRecovered;
 
 // factor affecting the epidemic
 float INFECTION_RADIUS = 0.3;
-unsigned int initialInfectedPercent = 10;
+unsigned int initialInfectedPercent = 3;
 
 int main(int argc, char **argv)
 {
