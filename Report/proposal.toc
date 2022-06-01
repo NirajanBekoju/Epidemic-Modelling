@@ -1,9 +1,0 @@
-\contentsline {section}{Introduction}{3}%
-\contentsline {subsection}{Compartmetal models in Epidemiology}{3}%
-\contentsline {subsection}{SIR Model}{3}%
-\contentsline {subsection}{The SIR model without vital dynamics}{4}%
-\contentsline {section}{Objectives}{5}%
-\contentsline {section}{Methodology}{5}%
-\contentsline {section}{Tools and Technologies}{5}%
-\contentsline {section}{Project Scope}{5}%
-\contentsline {section}{Project Schedule}{6}%
