@@ -63,11 +63,11 @@ Compartmental models are a very general modelling technique. They are often appl
 The models are most often run with ordinary differential equations (which are deterministic). Models try to predict how a disease spreads, or the total number infected, or the duration of an epidemic, and to estimate varous epidemiological parameters such as the reproductive number. Such models can show how different publich health interventions may affect the outcome of the epidemic, e.g., what the most efficient technique is for issuing a limited number of vaccines in a given population. 
 
 \subsection{SIR Model}
-The SIR model is on eof the simplest compartmental models, and many models are derivatives of this basic form. The model consists fo three compartments:-
+The SIR model is one of the simplest compartmental models, and many models are derivatives of this basic form. The model consists of three compartments:-
 
-S: The number of susceptibl individuals. When a susecptible and an infectious individuall come into "infectious contact", the susceptible individual contracts the disease and transistions to the infectious compartment.
+S: The number of susceptible individuals. When a susceptible and an infectious individual come into "infectious contact", the susceptible individual contracts the disease and transistions to the infectious compartment.
 
-I: THe number of infectious individuals. These are individuals who have been infected and are capable of infecting susceptible individuals.
+I: The number of infectious individuals. These are individuals who have been infected and are capable of infecting susceptible individuals.
 
 R: The number of removed(and immune) or deceased individuals. These are individuals who have been infected and have either recovered from the disease and entered the removed compartment, or died. IT is assumed that the number of deaths is negligible with respect ot the total population. This compartment may also beclalled "recovered" or "resistant".
 
@@ -76,7 +76,7 @@ This model is reasonably for infectious diseases that are transmitted from human
 These variables (S, I, and R) represent the number of people in each compartment at a particular time. To represent that the number of susceptible, infectious and removed individuals may vary over time (even if the total population size remains constant), we make the precise numbers a function of t (time): S(t), I(t) and R(t). For a specific disease in a specific population, these functions may be worked out in order to predict possible outbreaks and bring them under control.
 
 \subsection{The SIR model without vital dynamics}
-The dynamics of an epidemic, for example, the flu, are often much faster than the dynamics of birth and death, therefore, birth and death are often omitted in simple compartmental models. The SIR system without so-called vital dynamics (birth and death, sometimes called demography) can be expressed by the following system of ordinary differential equations.
+The dynamics of an epidemic, for example, the flu, are often much faster than the dynamics of birth and death, therefore, birth and death are often omitted in simple compartmental models. The SIR system without so-called vital dynamics (birth, death and immigration, sometimes called demography) can be expressed by the following system of ordinary differential equations.
 
 \begin{equation}
 \frac{dS}{dt} = -\frac{\beta IS}{N}
