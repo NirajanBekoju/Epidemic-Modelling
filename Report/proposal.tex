@@ -1,0 +1,103 @@
+\documentclass[a4paper, 12pt]{article} 
+
+\usepackage{array}
+{\renewcommand{\arraystretch}{2}% for the vertical padding
+
+\usepackage{parskip}
+\setlength{\parindent}{0pt}
+
+\setcounter{secnumdepth}{0}
+
+\title{Epidemic Modelling SIR Model}
+\author{Nirajan Bekoju, Nabin Da Shrestha}
+\date{June 1, 2022} 
+
+\begin{document}  
+\maketitle
+\clearpage
+
+\tableofcontents
+\clearpage
+
+\section{Introduction}
+\subsection{Compartmetal models in Epidemiology}
+Compartmental models are a very general modelling technique. They are often applied to the mathematical modelling of infectious diseases. The population is assigned to compartments with labels - for example S, I or R,(Susceptible, Infectious or Recovered.) People may progress between compartments. The order of the labels usually shows the flow patterns between the compartments; for example SEIS means susceptible, exposed, infectious, then susceptible again.
+
+The models are most often run with ordinary differential equations (which are deterministic). Models try to predict how a disease spreads, or the total number infected, or the duration of an epidemic, and to estimate varous epidemiological parameters such as the reproductive number. Such models can show how different publich health interventions may affect the outcome of the epidemic, e.g., what the most efficient technique is for issuing a limited number of vaccines in a given population. 
+
+\subsection{SIR Model}
+The SIR model is on eof the simplest compartmental models, and many models are derivatives of this basic form. The model consists fo three compartments:-
+
+S: The number of susceptibl individuals. When a susecptible and an infectious individuall come into "infectious contact", the susceptible individual contracts the disease and transistions to the infectious compartment.
+
+I: THe number of infectious individuals. These are individuals who have been infected and are capable of infecting susceptible individuals.
+
+R: The number of removed(and immune) or deceased individuals. These are individuals who have been infected and have either recovered from the disease and entered the removed compartment, or died. IT is assumed that the number of deaths is negligible with respect ot the total population. This compartment may also beclalled "recovered" or "resistant".
+
+This model is reasonably for infectious diseases that are transmitted from human to human and where recovery confers lasting resistance, such as measles,mumps, and rubella.
+
+These variables (S, I, and R) represent the number of people in each compartment at a particular time. To represent that the number of susceptible, infectious and removed individuals may vary over time (even if the total population size remains constant), we make the precise numbers a function of t (time): S(t), I(t) and R(t). For a specific disease in a specific population, these functions may be worked out in order to predict possible outbreaks and bring them under control.
+
+\subsection{The SIR model without vital dynamics}
+The dynamics of an epidemic, for example, the flu, are often much faster than the dynamics of birth and death, therefore, birth and death are often omitted in simple compartmental models. The SIR system without so-called vital dynamics (birth and death, sometimes called demography) can be expressed by the following system of ordinary differential equations.
+
+\begin{equation}
+\frac{dS}{dt} = -\frac{\beta IS}{N}
+\end{equation}
+
+\begin{equation}
+\frac{dI}{dt} = \frac{\beta IS}{N} - \gamma I
+\end{equation}
+
+\begin{equation}
+\frac{dR}{dt} = \gamma I
+\end{equation}
+ 
+ where, S is the stock of susceptible population, I is the stock of infected, R is the stock of removed population (either by death or recovery), and N is the sum of these three.
+ 
+This model was for the first time proposed by William Ogilvy Kermack and Anderson Gray McKendrick as a special case of what we now call Kermack–McKendrick theory, and followed work McKendrick had done with Ronald Ross.
+
+\clearpage
+
+\section{Objectives}
+The main objetives of this project are
+
+\begin{enumerate}
+  \item To understand the collision detection techniques in computer graphics.
+  \item To understand the spread of epidemic diseases along with its various parameters and their effects.
+  \item To learn about compartmental models in epidemiology (mainly SIR model).
+\end{enumerate}
+
+\section{Methodology}
+First of all, we are going to model the movement of cirlces representing people using 2D computer graphics. Then, including the functionality of compartmental model, we are goind to collect the data on spread of disease. Then we are going to perform data analysis and visualization on the data by varying different parameters like population density, infection radius, infection duration, initial infected percentage, etc. Then we are going to draw certain conclusion on our model using those analysis and visualization.
+
+\section{Tools and Technologies}
+We are going to use OpenGL C++ for the 2D graphics rendering to model the movement of people. Then, we are going to perform data analysis and visualization using python(pandas, matplotlib, seaborn, etc.)
+
+
+\section{Project Scope}
+This project could help to understand the SIR Compartmental model in epidemiology and could help us get detailed knowledge on the spread of disease. Using this program to get knowledge on various parameters like reproductive number of epidemic disease could help us know whether the epidemic disease spread will increase or decrease. Hence, this project could be used for study purpose of spread of epidemic disease in a locality.
+
+\clearpage
+\section{Project Schedule}
+The project schedule is as follow:
+
+\begin{center}
+\begin{tabular}{ | m{1cm} | m{10cm}| m{2cm} | } 
+  \hline
+  SN & Topic & Days Required \\ 
+  \hline
+  1 & Study on SIR model & 4 \\ 
+  \hline
+  2 & Developing logic and pseudocode & 7 \\ 
+  \hline
+  3 & Coding & 3 \\ 
+  \hline
+  4 & Executing, Testing and Debugging & 5 \\ 
+  \hline
+  5 & Program Documentation & 4 \\ 
+  \hline
+\end{tabular}
+\end{center}
+
+\end{document}
